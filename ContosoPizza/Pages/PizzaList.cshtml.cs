@@ -21,6 +21,12 @@ private readonly PizzaService _service;
     {
         PizzaList = _service.GetPizzas();
     }
+    public IActionResult OnPostDelete(int id)
+{
+    _service.DeletePizza(id);
+
+    return RedirectToAction("Get");
+}
     public IActionResult OnPost()
 {
     if (!ModelState.IsValid || NewPizza == null)
